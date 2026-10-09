@@ -17,7 +17,7 @@ def getlist(
     keyword:Optional[str]=None,
     db:Session=Depends(get_db)
 ):
-    res=db.query(Book).options(joinedload(Book.authors))
+    res=db.query(Book)
     if keyword:
         res=res.filter(or_(
             Book.bname.like(f"%{keyword}%")
